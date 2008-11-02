@@ -3,19 +3,24 @@ b: 1$
 k: 10$
 l: 2$
 
-K(x,t) := if (0<=x) and (x<=t) then cosh(x)*cosh(t-1)/sinh(1) else cosh(t)*cosh(x-1)/sinh(1)$
+K(x,t) := if (0<=x) and (x<=t) then
+                                 cosh(x)*cosh(t-1)/sinh(1)
+                               else
+                                 cosh(t)*cosh(x-1)/sinh(1)$
 f(x) := cosh(x)$
 
 h: (b-a)/k;
 grid: makelist(a+i*h, i, 0, k)$
 
 /* List subscripts are 1-based in Maxima, so we add 1 to indices */
-B: genmatrix(lambda([i, j], h * K(grid[i+1], grid[j+1]) * (if (j=0 or j=k) then 1/2 else 1)), k, k, 0, 0)$
+B: genmatrix(lambda([i, j], h * K(grid[i], grid[j]) * (if (j=1 or j=k+1) then 1/2 else 1)),
+             k+1, k+1, 1, 1)$
 
-x_list: makelist(x[i], i, 0, k)$
+variables: makelist(x[i], i, 1, k+1)$
 f_list: map(f, grid)$
-C: (ident(k+1)-l*B).x_list$
+C: (ident(k+1)-l*B).variables$
 
 /* Solve $Cx=f$ */
-solution: solve(makelist((C[i+1][1]=f_list[i+1]), i, 0, k), x_list)$
-write_data(float(makelist([grid[i+1], rhs(solution[1][i+1])], i, 0, k)), "out.mac");
+equations: makelist((C[i][1]=f_list[i]), i, 1, k+1)$
+solution: solve(equations, variables)$
+write_data(float(makelist([grid[i], rhs(solution[1][i])], i, 1, k+1)), "out.mac");

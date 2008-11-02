@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{amsmath,amssymb}
+
+% rich title
+\usepackage{titling}
+
+\numberwithin{equation}{section}
+
+% Russian traditions
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\usepackage{misccorr}
+
+\providecommand{\at}[1]{\vert_{#1}}
+\begin{document}
+
+\author{Дмитрий Джус}
+\title{Курсовая работа по теме \\
+  \Huge{«Интегральные уравнения»}}
+\pretitle{\begin{center}\LARGE}
+\posttitle{\par\end{center}\vskip 3pc}
+\maketitle
+\thispagestyle{empty}
+
+\clearpage
+\tableofcontents
+
+\clearpage
+\part{Постановка задачи}
+
+\section{Исходные данные}
+
+В настоящей курсовой работе рассматриваются методы решения
+неоднородного симметричного интегрального уравнения вида
+
+\begin{equation}
+  \label{eq:ieq-gen}
+  \phi(x) - \lambda \int \limits_a^b {K(x, t) \phi(t) dt} = f(x)
+\end{equation}
+
+В решении использованы конкретные значения $a=0$, $b=1$, $\lambda = 2$
+и $f(x) = \ch(x)$, при которых \eqref{eq:ieq-gen} принимает вид
+
+\begin{equation}
+  \label{eq:ieq}
+  \phi(x) - 2 \int \limits_0^1 {K(x, t) \phi(t) dt} = \ch{x}
+\end{equation}
+
+Выражение для ядра $K(x,t)$ имеет вид
+
+\begin{equation}
+  \label{eq:kernel}
+  K(x, t) = 
+  \begin{cases}
+    \frac{\ch{x} \ch(t-1)}{\sh(1)} & 0 \leq x \leq t\\
+    \frac{\ch{t} \ch(x-1)}{\sh(1)} & t < x \leq 1
+  \end{cases}
+\end{equation}
+
+\section{Используемые методы}
+
+Точное аналитическое решение было получено путём сведения уравнения с
+неоднородной краевой задаче. Также предложено приближённое решение в
+виде ряда по собственным функциям оператора $\hat{I}(x)\at{s} =
+\int_a^b{K(s, \tau) x(\tau) d\tau}$ и численное решение, полученное
+заменой определённого интеграла приближённой квадратурной формулой
+трапеций.
+
+Сравнение полученных приближённых решений с точным представлено в
+разделе \pageref{sec:comparison}.
+
+\clearpage
+\part{Решение}
+
+\section{Аналитическое решение}
+
+\section{Решение в виде ряда по собственным функциям интегрального
+  оператора}
+
+\section{Численное решение}
+
+\section{Сопоставление результатов}
+\label{sec:comparison}
+
+\end{document}

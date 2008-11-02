@@ -6,16 +6,16 @@ b = 1
 k = 150
 lambda = 2
 
-function retval = f (x)
-  retval = cosh(x);
+function f = f (x)
+  f = cosh(x);
 endfunction
 
 # Kernel
-function retval = K (x, t)
+function K = K (x, t)
   if ((0 <= x) & (x <= t))
-    retval = cosh(x)*cosh(t-1)/sinh(1);
+    K = cosh(x)*cosh(t-1)/sinh(1);
   else
-    retval = cosh(t)*cosh(x-1)/sinh(1);
+    K = cosh(t)*cosh(x-1)/sinh(1);
   endif
 endfunction
 

@@ -1,7 +1,6 @@
 \documentclass{article}
 \usepackage[utf8x]{inputenc}
 \usepackage[english,russian]{babel}
-
 \usepackage{amsmath,amssymb}
 
 % rich title
@@ -14,9 +13,10 @@
 \renewcommand{\phi}{\varphi}
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
+\renewcommand{\vec}[1]{{}^{\small{\vee}}\negmedspace#1}
 \usepackage{misccorr}
 
-\providecommand{\at}[1]{\vert_{#1}}
+\providecommand{\at}[2]{\left. {#1}\right\vert_{#2}}
 \begin{document}
 
 \author{Дмитрий Джус}
@@ -40,7 +40,7 @@
 
 \begin{equation}
   \label{eq:ieqgen}
-  \phi(x) - \lambda \int \limits_a^b {K(x, t) \phi(t) dt} = f(x)
+  \phi(x) - \lambda \int \limits_a^b {K(x, t) \phi(t)\,dt} = f(x)
 \end{equation}
 
 В решении использованы конкретные значения $a=0$, $b=1$, $\lambda = 2$
@@ -48,7 +48,7 @@
 
 \begin{equation}
   \label{eq:ieq}
-  \phi(x) - 2 \int \limits_0^1 {K(x, t) \phi(t) dt} = \ch{x}
+  \phi(x) - 2 \int \limits_0^1 {K(x, t) \phi(t)\,dt} = \ch{x}
 \end{equation}
 
 Где ядро $K(x,t)$ определено следующим образом:
@@ -66,8 +66,8 @@
 
 Точное аналитическое решение было получено путём сведения уравнения с
 неоднородной краевой задаче. Также предложено приближённое решение в
-виде ряда по собственным функциям оператора $\hat{I}(x)\at{s} =
-\int_a^b{K(s, \tau) x(\tau) d\tau}$ и численное решение, полученное
+виде ряда по собственным функциям оператора $\hat{I}(x) =
+\int_a^b{K(s, \tau) x(\tau)\, d\tau}$ и численное решение, полученное
 заменой определённого интеграла приближённой квадратурной формулой
 трапеций.
 

@@ -79,6 +79,155 @@
 
 \section{Аналитическое решение}
 
+Рассмотрим метод сведения \eqref{eq:ieq} к неоднородной краевой задаче
+с целью получения точного решения.
+
+Выразим $\phi(x)$ из \eqref{eq:ieq}:
+
+\begin{equation}
+  \label{eq:phi}
+  \phi(x) = \ch{x} + 
+  \underbrace{\frac{\lambda \ch(x-1)}{\sh{1}}\int_0^x{\ch(t) \phi(t)\,dt}}_{I_1(x)} +
+  \underbrace{\frac{\lambda \ch{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt}}_{I_2(x)}
+\end{equation}
+
+Продифференцируем $\phi(x)$:
+\begin{equation*}
+  \phi'(x) = \sh{x} + I_1'(x) + I_2'(x)
+\end{equation*}
+
+Применим для вычисления $I_1'(x)$ и $I_2'(x)$ формулу для производной
+интеграла с пределами, зависящими от переменной дифференцирования (см.
+\cite{fikhtengolz03}):
+\begin{multline}\label{eq:intdiff}
+  \left [ \int_{\alpha(x)}^{\beta(x)}{f(t, x)\,dt} \right ] ' = 
+  \int_{\alpha(x)}^{\beta(x)}{{f_x}'(t, x)\,dt}\, + \\
+  + \beta'(x)\cdot f(\beta(x), x) -
+  \alpha'(x)\cdot f(\alpha(x), x)
+\end{multline}
+
+Найдём $I_1'(x)$:
+\begin{align*}
+  I_1'(x) &= \left[ \frac{\lambda \ch(x-1)}{\sh{1}}\int_0^x{\ch(t) \phi(t)\,dt} \right] ' = \\
+  &= \frac{\lambda \sh(x-1)}{\sh{1}}\int_0^x{\ch(t)\phi(t)\,dt} +
+  \frac{\lambda \ch(x-1)}{\sh{1}} \left ( \int_0^x{0\,dt} +
+    1 \cdot \ch(x) \phi(x) - 0 \right) = \\
+  &= \frac{\lambda \sh(x-1)}{\sh{1}}\int_0^x{\ch(t)\phi(t)\,dt} +
+  \frac{\lambda \ch(x-1) \ch(x) \phi(x)}{\sh{1}}    
+\end{align*}
+
+Аналогично, $I_2'(x)$:
+\begin{align*}
+  I_2'(x) &= \left[\frac{\lambda \sh{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt} \right] ' = \\
+  &= \frac{\lambda \sh{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt} -
+  \frac{\lambda \ch(x-1) \ch(x) \phi(x)}{\sh{1}}
+\end{align*}
+
+Таким образом, выражение для $\phi'(x)$ принимает вид:
+\begin{equation}
+  \label{eq:phidiff}
+  \phi'(x) = \sh{x} +
+  \underbrace{\frac{\lambda \sh(x-1)}{\sh{1}}\int_0^x{\ch(t) \phi(t)\,dt}}_{J_1(x)} +
+  \underbrace{\frac{\lambda \sh{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt}}_{J_2(x)}
+\end{equation}
+
+Выполним дифференцирование ещё один раз:
+\begin{equation*}
+  \phi''(x) = \ch{x} + J_1'(x) + J_2'(x)
+\end{equation*}
+
+Вновь применим формулу \eqref{eq:intdiff}:
+\begin{align*}
+  J_1'(x) =& \frac{\lambda \ch(x-1)}{\sh{1}}\int_0^x{\ch(t)\phi(t)\,dt} +
+  \frac{\lambda \sh(x-1) \ch(x) \phi(x)}{\sh{1}} \\
+  J_2'(x) =& \frac{\lambda \ch{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt} -
+  \frac{\lambda \ch(x-1) \sh(x) \phi(x)}{\sh{1}}
+\end{align*}
+
+Получаем значение $\phi''(x)$:
+\begin{align*}
+  \phi''(x) &= \left [ \ch{x} +
+  \frac{\lambda \ch(x-1)}{\sh{1}}\int_0^x{\ch(t)\phi(t)\,dt} +
+  \frac{\lambda \ch{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt}\, \right ] +\\
+  &+ \frac{\lambda \sh(x-1) \ch(x) \phi(x)}{\sh{1}} -
+  \frac{\lambda \ch(x-1) \sh(x) \phi(x)}{\sh{1}}
+\end{align*}
+
+Согласно \eqref{eq:phi}, выражение в квадратных скобках представляет
+собой $\phi(x)$, так что $\phi''(x)$ равно:
+\begin{align*}
+  \phi''(x) &= \phi(x) + 
+  \frac{\lambda \sh(x-1) \ch(x) \phi(x)}{\sh{1}} -
+  \frac{\lambda \sh(x) \ch(x-1) \phi(x)}{\sh{1}} \\
+  &= \phi(x) + \frac{\lambda \phi(x)}{\sh{1}}
+  ( \sh(x-1) \ch(x) - \sh(x) \ch(x-1) )
+\end{align*}
+
+Преобразуем гиперболический синус разности:
+\begin{equation*}
+  \sh(x-1) \ch(x) - \sh(x) \ch(x-1) = \sh((x-1) - x) = \sh(-1) = -\sh{1}
+\end{equation*}
+
+Тогда окончательное выражение для $\phi''(x)$ с учётом $\lambda = 2$
+записывается в виде:
+\begin{equation}
+  \label{eq:phi2diff}
+  \phi''(x) = \at{\phi(x) + \frac{\lambda \phi(x)}{\sh{1}}(-\sh{1})}{\lambda=2} =
+  \at{\phi(x) - \lambda \phi(x)}{\lambda=2} = -\phi(x)
+\end{equation}
+
+Итак, получено однородное дифференциальное уравнение второго порядка с
+постоянными коэффициентами:
+
+\begin{equation}
+  \label{eq:diffeq}
+  \phi''(x) + \phi(x) = 0
+\end{equation}
+
+Из \eqref{eq:phidiff} получаем краевые условия второго рода:
+\begin{subequations}
+  \label{eq:boundary}
+  \begin{align}
+    \phi'(0) &= 0 \\
+    \phi'(1) &= \sh{1}
+  \end{align}
+\end{subequations}
+
+Итак, интегральное уравнение сведено к краевой задаче
+\begin{equation}
+  \begin{cases}
+    \phi''(x) + \phi(x) = 0\\
+    \phi'(0) = 0, \quad \phi'(1) = \sh{1}
+  \end{cases}
+\end{equation}
+
+Общее решение дифференциального уравнения \eqref{eq:diffeq}:
+\begin{equation}
+  \phi(x) = C_1 \sin{x} + C_2 \cos{x}
+\end{equation}
+
+Применяя краевые условия \eqref{eq:boundary}, запишем значения
+констант $C_1$ и $C_2$:
+\begin{equation*}
+  \phi'(0) = 0 \implies
+  \left( \at{\left \{ C_1 \cos{x} - C_2 \sin{x} \right \}}{x=0} =
+    C_1 \right) = 0 \implies C_1 = 0
+\end{equation*}
+\begin{align*}
+  \phi'(1) = \sh{1} &\implies
+  \left( \at{\left \{ C_1 \cos{x} - C_2 \sin{x} \right
+      \}}{x=1,\, C_1=0} = - C_2 \sin{1} \right) = \sh{1} \implies\\
+  &\implies C_2 = -\frac{\sh{1}}{\sin{1}}
+\end{align*}
+
+Таким образом, решением полученной краевой задачи и исходного
+интегрального уравнения \eqref{eq:ieq} является функция $\phi(x)$:
+\begin{equation}
+  \label{eq:solution}
+  \phi(x) = -\frac{\sh{1} \cdot \cos{x}}{\sin{1}}
+\end{equation}
+
+
 \section{Решение в виде ряда по собственным функциям интегрального
   оператора}
 
@@ -86,5 +235,11 @@
 
 \section{Сопоставление результатов}
 \label{sec:comparison}
+
+\appendix
+
+% \clearpage
+\bibliographystyle{gost71s}
+\bibliography{paper}
 
 \end{document}

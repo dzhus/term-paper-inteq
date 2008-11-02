@@ -1,0 +1,45 @@
+#! /usr/bin/octave
+
+# Problem
+a = 0
+b = 1
+k = 150
+lambda = 2
+
+function retval = f (x)
+  retval = cosh(x);
+endfunction
+
+# Kernel
+function retval = K (x, t)
+  if ((0 <= x) & (x <= t))
+    retval = cosh(x)*cosh(t-1)/sinh(1);
+  else
+    retval = cosh(t)*cosh(x-1)/sinh(1);
+  endif
+endfunction
+
+h = (b - a) / k
+grid = a : h : b;
+
+B = zeros(k+1);
+for i = 1:k+1
+  for j = 1:k+1
+    if ((j == 0) | (j == k+1))
+      factor = 1/2;
+    else
+      factor = 1;
+    endif
+    B(i, j) = h * factor * K(grid(i), grid(j));
+  endfor
+endfor
+
+f_vector = zeros(k+1, 1);
+for i = 1:k+1
+  f_vector(i) = f(grid(i));
+endfor
+
+values = (eye(k+1) - lambda*B) \ f_vector;
+
+solution = [grid', values]
+save out.oct solution

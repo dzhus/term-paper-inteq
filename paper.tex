@@ -235,6 +235,58 @@
 
 \section{Численное решение}
 
+Воспользуемся квадратурной формулой для вычисления определённого
+интеграла $\int_a^b {K(x, t) \phi(t)\,dt}$ в \eqref{eq:ieqgen}.
+
+Пусть на отрезке интегрирования $[a; b]$ введена равномерная сетка
+$\Xi_n = \langle a = \tau_1, \dotsc, \tau_{n+1} = b \rangle$ с шагом
+$h = \frac{b-a}{n}$. Тогда квадратурная формула трапеций принимает
+вид:
+\begin{equation}
+  \label{eq:trapez-rule}
+  \int_a^b{f(x)\,dx} \approx h \left [ \frac{f(\tau_1)+f(\tau_{n+1})}{2} +
+    \sum_{j=2}^n f(\tau_j) \right ]
+\end{equation}
+
+С учётом \eqref{eq:trapez-rule} интегральное уравнение
+\eqref{eq:ieqgen} в приближённом виде записывается следующим образом:
+\begin{equation*}
+  \phi(x) - \lambda h \left[ 
+    \frac{K(x,\tau_1) \phi(\tau_1) + 
+      K(x,\tau_{n+1}) \phi(\tau_{n+1})}{2} + 
+    \sum_{j=2}^n K(x, \tau_{j}) \phi(\tau_{j}) 
+  \right] = f(x)
+\end{equation*}
+
+Записывая его для каждого $x = \tau_i \in \Xi_n$, получим систему линейных
+уравнений:
+\begin{equation*}
+  \phi(\tau_i) - \lambda h \left[ 
+    \frac{K(\tau_i,\tau_1) \phi(\tau_1) + 
+      K(\tau_i,\tau_{n+1}) \phi(\tau_{n+1})}{2} + 
+    \sum_{j=2}^n K(\tau_i, \tau_{j}) \phi(\tau_{j}) 
+  \right] = f(\tau_i)
+\end{equation*}
+
+В матричном виде эта система имеет вид:
+\begin{equation}
+  \label{eq:matrix-equation}
+  (E_n-\lambda B) \vec{\phi} = \vec{f}
+\end{equation}
+
+В системе \eqref{eq:matrix-equation} матрица $E_n$ — единичная размера
+$n×n$, а $B$ состоит из элементов $b_j^i$, определяемых как
+\begin{equation*}
+  b_j^i =
+  \begin{cases}
+    \frac{1}{2}hK(\tau_i, \tau_j) & j = 1,\, j = n+1 \\
+    \phantom{\frac{1}{2}} hK(\tau_i, \tau_j) & j = \overline{2,n}
+  \end{cases}
+\end{equation*}
+
+Решение системы \eqref{eq:matrix-equation} представляет собой вектор,
+состоящий из значений функции $\phi(x)$ в точках сетки $\Xi_n$.
+
 \section{Сопоставление результатов}
 \label{sec:comparison}
 

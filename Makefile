@@ -24,12 +24,6 @@ doc: ${DOCNAME}.pdf
 clean:
 	@rm -frv `hg status --unknown --no-status`
 
-numeric.mac: numeric.mac.nw
-	${NOTANGLE} $< > $@
-
-numeric.mac.tex: numeric.mac.nw
-	${NOWEAVE} $< > $@
-
 numeric.oct: numeric.oct.nw
 	${NOTANGLE} $< > $@
 

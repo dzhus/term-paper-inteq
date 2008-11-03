@@ -14,6 +14,7 @@
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\vec}[1]{{}^{\small{\vee}}\negmedspace#1}
+\newcommand{\intl}{\int\limits}
 \usepackage{misccorr}
 
 % Bib in TOC
@@ -43,7 +44,7 @@
 
 \begin{equation}
   \label{eq:ieqgen}
-  \phi(x) - \lambda \int \limits_a^b {K(x, t) \phi(t)\,dt} = f(x)
+  \phi(x) - \lambda \intl_a^b {K(x, t) \phi(t)\,dt} = f(x)
 \end{equation}
 
 В решении использованы конкретные значения $a=0$, $b=1$, $\lambda = 2$
@@ -51,7 +52,7 @@
 
 \begin{equation}
   \label{eq:ieq}
-  \phi(x) - 2 \int \limits_0^1 {K(x, t) \phi(t)\,dt} = \ch{x}
+  \phi(x) - 2 \intl_0^1 {K(x, t) \phi(t)\,dt} = \ch{x}
 \end{equation}
 
 Где ядро $K(x,t)$ определено следующим образом:
@@ -90,8 +91,8 @@
 \begin{equation}
   \label{eq:phi}
   \phi(x) = \ch{x} + 
-  \underbrace{\frac{\lambda \ch(x-1)}{\sh{1}}\int_0^x{\ch(t) \phi(t)\,dt}}_{I_1(x)} +
-  \underbrace{\frac{\lambda \ch{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt}}_{I_2(x)}
+  \underbrace{\frac{\lambda \ch(x-1)}{\sh{1}}\intl_0^x{\ch(t) \phi(t)\,dt}}_{I_1(x)} +
+  \underbrace{\frac{\lambda \ch{x}}{\sh{1}}\intl_x^1{\ch(t-1)\phi(t)\,dt}}_{I_2(x)}
 \end{equation}
 
 Продифференцируем $\phi(x)$:
@@ -103,26 +104,26 @@
 интеграла с пределами, зависящими от переменной дифференцирования (см.
 \cite{fikhtengolz03}):
 \begin{multline}\label{eq:intdiff}
-  \left [ \int_{\alpha(x)}^{\beta(x)}{f(t, x)\,dt} \right ] ' = 
-  \int_{\alpha(x)}^{\beta(x)}{{f_x}'(t, x)\,dt}\, + \\
+  \left [ \intl_{\alpha(x)}^{\beta(x)}{f(t, x)\,dt} \right ] ' = 
+  \intl_{\alpha(x)}^{\beta(x)}{{f_x}'(t, x)\,dt}\, + \\
   + \beta'(x)\cdot f(\beta(x), x) -
   \alpha'(x)\cdot f(\alpha(x), x)
 \end{multline}
 
 Найдём $I_1'(x)$:
 \begin{align*}
-  I_1'(x) &= \left[ \frac{\lambda \ch(x-1)}{\sh{1}}\int_0^x{\ch(t) \phi(t)\,dt} \right] ' = \\
-  &= \frac{\lambda \sh(x-1)}{\sh{1}}\int_0^x{\ch(t)\phi(t)\,dt} +
-  \frac{\lambda \ch(x-1)}{\sh{1}} \left ( \int_0^x{0\,dt} +
+  I_1'(x) &= \left[ \frac{\lambda \ch(x-1)}{\sh{1}}\intl_0^x{\ch(t) \phi(t)\,dt} \right] ' = \\
+  &= \frac{\lambda \sh(x-1)}{\sh{1}}\intl_0^x{\ch(t)\phi(t)\,dt} +
+  \frac{\lambda \ch(x-1)}{\sh{1}} \left ( \intl_0^x{0\,dt} +
     1 \cdot \ch(x) \phi(x) - 0 \right) = \\
-  &= \frac{\lambda \sh(x-1)}{\sh{1}}\int_0^x{\ch(t)\phi(t)\,dt} +
+  &= \frac{\lambda \sh(x-1)}{\sh{1}}\intl_0^x{\ch(t)\phi(t)\,dt} +
   \frac{\lambda \ch(x-1) \ch(x) \phi(x)}{\sh{1}}    
 \end{align*}
 
 Аналогично, $I_2'(x)$:
 \begin{align*}
-  I_2'(x) &= \left[\frac{\lambda \sh{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt} \right] ' = \\
-  &= \frac{\lambda \sh{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt} -
+  I_2'(x) &= \left[\frac{\lambda \sh{x}}{\sh{1}}\intl_x^1{\ch(t-1)\phi(t)\,dt} \right] ' = \\
+  &= \frac{\lambda \sh{x}}{\sh{1}}\intl_x^1{\ch(t-1)\phi(t)\,dt} -
   \frac{\lambda \ch(x-1) \ch(x) \phi(x)}{\sh{1}}
 \end{align*}
 
@@ -130,8 +131,8 @@
 \begin{equation}
   \label{eq:phidiff}
   \phi'(x) = \sh{x} +
-  \underbrace{\frac{\lambda \sh(x-1)}{\sh{1}}\int_0^x{\ch(t) \phi(t)\,dt}}_{J_1(x)} +
-  \underbrace{\frac{\lambda \sh{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt}}_{J_2(x)}
+  \underbrace{\frac{\lambda \sh(x-1)}{\sh{1}}\intl_0^x{\ch(t) \phi(t)\,dt}}_{J_1(x)} +
+  \underbrace{\frac{\lambda \sh{x}}{\sh{1}}\intl_x^1{\ch(t-1)\phi(t)\,dt}}_{J_2(x)}
 \end{equation}
 
 Выполним дифференцирование ещё один раз:
@@ -141,17 +142,17 @@
 
 Вновь применим формулу \eqref{eq:intdiff}:
 \begin{align*}
-  J_1'(x) =& \frac{\lambda \ch(x-1)}{\sh{1}}\int_0^x{\ch(t)\phi(t)\,dt} +
+  J_1'(x) =& \frac{\lambda \ch(x-1)}{\sh{1}}\intl_0^x{\ch(t)\phi(t)\,dt} +
   \frac{\lambda \sh(x-1) \ch(x) \phi(x)}{\sh{1}} \\
-  J_2'(x) =& \frac{\lambda \ch{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt} -
+  J_2'(x) =& \frac{\lambda \ch{x}}{\sh{1}}\intl_x^1{\ch(t-1)\phi(t)\,dt} -
   \frac{\lambda \ch(x-1) \sh(x) \phi(x)}{\sh{1}}
 \end{align*}
 
 Получаем значение $\phi''(x)$:
 \begin{align*}
   \phi''(x) &= \left [ \ch{x} +
-  \frac{\lambda \ch(x-1)}{\sh{1}}\int_0^x{\ch(t)\phi(t)\,dt} +
-  \frac{\lambda \ch{x}}{\sh{1}}\int_x^1{\ch(t-1)\phi(t)\,dt}\, \right ] +\\
+  \frac{\lambda \ch(x-1)}{\sh{1}}\intl_0^x{\ch(t)\phi(t)\,dt} +
+  \frac{\lambda \ch{x}}{\sh{1}}\intl_x^1{\ch(t-1)\phi(t)\,dt}\, \right ] +\\
   &+ \frac{\lambda \sh(x-1) \ch(x) \phi(x)}{\sh{1}} -
   \frac{\lambda \ch(x-1) \sh(x) \phi(x)}{\sh{1}}
 \end{align*}
@@ -236,7 +237,7 @@
 \section{Численное решение}
 
 Воспользуемся квадратурной формулой для вычисления определённого
-интеграла $\int_a^b {K(x, t) \phi(t)\,dt}$ в \eqref{eq:ieqgen}.
+интеграла $\intl_a^b {K(x, t) \phi(t)\,dt}$ в \eqref{eq:ieqgen}.
 
 Пусть на отрезке интегрирования $[a; b]$ введена равномерная сетка
 $\Xi_n = \langle a = \tau_1, \dotsc, \tau_{n+1} = b \rangle$ с шагом
@@ -244,7 +245,7 @@ $h = \frac{b-a}{n}$. Тогда квадратурная формула трап
 вид (см. \cite{bakhvalov01}):
 \begin{equation}
   \label{eq:trapez-rule}
-  \int_a^b{f(x)\,dx} \approx h \left [ \frac{f(\tau_1)+f(\tau_{n+1})}{2} +
+  \intl_a^b{f(x)\,dx} \approx h \left [ \frac{f(\tau_1)+f(\tau_{n+1})}{2} +
     \sum_{j=2}^n f(\tau_j) \right ]
 \end{equation}
 

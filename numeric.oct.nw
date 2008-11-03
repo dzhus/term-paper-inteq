@@ -37,7 +37,7 @@ n = 100
 
 <<вычисление шага и построение сетки>>=
 h = (b - a) / (n - 1)
-grid = a : h : b;
+tau = a : h : b;
 
 @
 <<построение и решение системы>>=
@@ -60,13 +60,13 @@ for i = 1:n
     else
       factor = 1;
     endif
-    B(i, j) = h * factor * K(grid(i), grid(j));
+    B(i, j) = h * factor * K(tau(i), tau(j));
   endfor
 endfor
 <<построение вектора $\vec{f}$>>=
 f_vector = zeros(n, 1);
 for i = 1:n
-  f_vector(i) = f(grid(i));
+  f_vector(i) = f(tau(i));
 endfor
 @ \program{GNU Octave} — численная среда, поэтому в отличие от
 \program{Maxima} нам не требуется создавать \emph{символьный} вектор
@@ -77,5 +77,5 @@ endfor
 phi_values = (eye(n) - lambda*B) \ f_vector;
 
 <<запись решения в файл>>=
-points = [grid', phi_values]
+points = [tau', phi_values]
 save out.oct points

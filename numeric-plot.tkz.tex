@@ -1,0 +1,32 @@
+\begin{figure}[htb]
+  \centering
+  \begin{tikzpicture}[scale=4,
+                      axis/.style={draw=gray,thin},
+                      grid/.style={axis,dotted}]
+    \coordinate[] (O) at (0,0) {};
+    
+    % cartesian coordinates
+    \draw [axis,->] ($ (O) - (0,1.8) $)--($ (O) + (0,0.5) $) node[label=left:$y$] {};
+    \draw [axis,->] (O)--($ (O) + (1.5,0) $) node[label=above:$x$] {};
+
+    % axis marks
+    \draw[] (0pt,-1pt) -- (0pt,1pt);
+    \node[label=above left:$0$] at (O) {};
+    \foreach \x/\xtext in {.5/\frac{1}{2}, 1}
+    {\begin{scope}
+        \draw[xshift=\x cm] (0pt,-1pt) -- (0pt,1pt) node[above] {$\xtext$};
+        \draw[xshift=\x cm,grid] (0,0)--(0,-1.65);
+    \end{scope}}
+      
+    \foreach \y/\ytext in {-1.5/-\frac{3}{2}, -1, 
+                           -.5/-\frac{1}{2}, 0/}
+    {\begin{scope}
+        \draw[yshift=\y cm] (1pt,0pt)--(-1pt,0pt) node[left] {$\ytext$};
+        \draw[yshift=\y cm,grid] (0,0)--(1.2,0);
+    \end{scope}}
+    
+    \draw[very thick, color=gray] plot[domain=-0.1:1.1] function{sinh(-1)*cos(x)/sin(1)};
+    \draw plot[only marks,mark=*,mark size=.4] file{out.oct};
+  \end{tikzpicture}
+  \caption{Сравнение аналитического и численного решения}
+\end{figure}

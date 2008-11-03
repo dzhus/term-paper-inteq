@@ -283,13 +283,14 @@ $h = \frac{b-a}{n}$. Тогда квадратурная формула трап
 
 В системе \eqref{eq:matrix-equation} матрица $E_n$ — единичная размера
 $n×n$, а $B$ состоит из элементов $b_j^i$, определяемых как
-\begin{equation*}
+\begin{equation}
+  \label{eq:B-matrix-element}
   b_j^i =
   \begin{cases}
     \frac{1}{2}hK(\tau_i, \tau_j) & j = 1,\, j = n+1 \\
     \phantom{\frac{1}{2}} hK(\tau_i, \tau_j) & j = \overline{2,n}
   \end{cases}
-\end{equation*}
+\end{equation}
 
 Решение системы \eqref{eq:matrix-equation} представляет собой вектор,
 состоящий из значений функции $\phi(x)$ в точках сетки $\Xi_n$.

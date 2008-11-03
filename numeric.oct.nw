@@ -55,7 +55,7 @@ tau = a : h : b;
 B = zeros(n);
 for i = 1:n
   for j = 1:n
-    if ((j == 0) | (j == n))
+    if ((j == 1) | (j == n))
       factor = 1/2;
     else
       factor = 1;

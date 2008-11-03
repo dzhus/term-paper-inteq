@@ -247,13 +247,13 @@
 интеграла $\intl_a^b {K(x, t) \phi(t)\,dt}$ в \eqref{eq:ieqgen}.
 
 Пусть на отрезке интегрирования $[a; b]$ введена равномерная сетка
-$\Xi_n = \langle a = \tau_1, \dotsc, \tau_{n+1} = b \rangle$ с шагом
-$h = \frac{b-a}{n}$. Тогда квадратурная формула трапеций принимает
+$\Xi_n = \langle a = \tau_1, \dotsc, \tau_n = b \rangle$ с шагом
+$h = \frac{b-a}{n-1}$. Тогда квадратурная формула трапеций принимает
 вид (см. \cite{bakhvalov01}):
 \begin{equation}
   \label{eq:trapez-rule}
-  \intl_a^b{f(x)\,dx} \approx h \left [ \frac{f(\tau_1)+f(\tau_{n+1})}{2} +
-    \sum_{j=2}^n f(\tau_j) \right ]
+  \intl_a^b{f(x)\,dx} \approx h \left [ \frac{f(\tau_1)+f(\tau_n)}{2} +
+  \sum_{j=2}^{n-1} f(\tau_j) \right ]
 \end{equation}
 
 С учётом \eqref{eq:trapez-rule} интегральное уравнение
@@ -261,8 +261,8 @@ $h = \frac{b-a}{n}$. Тогда квадратурная формула трап
 \begin{equation*}
   \phi(x) - \lambda h \left[ 
     \frac{K(x,\tau_1) \phi(\tau_1) + 
-      K(x,\tau_{n+1}) \phi(\tau_{n+1})}{2} + 
-    \sum_{j=2}^n K(x, \tau_{j}) \phi(\tau_{j}) 
+      K(x,\tau_n) \phi(\tau_n)}{2} + 
+    \sum_{j=2}^{n-1} K(x, \tau_{j}) \phi(\tau_{j}) 
   \right] = f(x)
 \end{equation*}
 
@@ -271,8 +271,8 @@ $h = \frac{b-a}{n}$. Тогда квадратурная формула трап
 \begin{equation*}
   \phi(\tau_i) - \lambda h \left[ 
     \frac{K(\tau_i,\tau_1) \phi(\tau_1) + 
-      K(\tau_i,\tau_{n+1}) \phi(\tau_{n+1})}{2} + 
-    \sum_{j=2}^n K(\tau_i, \tau_{j}) \phi(\tau_{j}) 
+      K(\tau_i,\tau_n) \phi(\tau_n)}{2} + 
+    \sum_{j=2}^{n-1} K(\tau_i, \tau_{j}) \phi(\tau_{j}) 
   \right] = f(\tau_i)
 \end{equation*}
 
@@ -288,8 +288,8 @@ $n×n$, а $B$ состоит из элементов $b_j^i$, определя�
   \label{eq:B-matrix-element}
   b_j^i =
   \begin{cases}
-    \frac{1}{2}hK(\tau_i, \tau_j) & j = 1,\, j = n+1 \\
-    \phantom{\frac{1}{2}} hK(\tau_i, \tau_j) & j = \overline{2,n}
+    \frac{1}{2}hK(\tau_i, \tau_j) & j = 1,\, j = n \\
+    \phantom{\frac{1}{2}} hK(\tau_i, \tau_j) & j = \overline{2,n-1}
   \end{cases}
 \end{equation}
 

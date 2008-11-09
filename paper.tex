@@ -43,7 +43,7 @@
 \title{Курсовая работа по теме \\
   \Huge{«Интегральные уравнения»}}
 \pretitle{\begin{center}\LARGE}
-\posttitle{\par\end{center}\vskip 3pc}
+  \posttitle{\par\end{center}\vskip 3pc}
 \date{}
 \maketitle
 \thispagestyle{empty}
@@ -170,8 +170,8 @@ h_n(t)$ (в данном случае $n=1$), ядро вырождено. Та�
 Получаем значение $\phi''(x)$:
 \begin{align*}
   \phi''(x) &= \left [ \ch{x} +
-  \frac{\lambda \ch(x-1)}{\sh{1}}\intl_0^x{\ch(t)\phi(t)\,dt} +
-  \frac{\lambda \ch{x}}{\sh{1}}\intl_x^1{\ch(t-1)\phi(t)\,dt}\, \right ] +\\
+    \frac{\lambda \ch(x-1)}{\sh{1}}\intl_0^x{\ch(t)\phi(t)\,dt} +
+    \frac{\lambda \ch{x}}{\sh{1}}\intl_x^1{\ch(t-1)\phi(t)\,dt}\, \right ] +\\
   &+ \frac{\lambda \sh(x-1) \ch(x) \phi(x)}{\sh{1}} -
   \frac{\lambda \ch(x-1) \sh(x) \phi(x)}{\sh{1}}
 \end{align*}
@@ -439,7 +439,7 @@ $S=\{0\leq x \leq 1,\, 0 \leq t \leq 1\}$ и имеет в $S$ равномер�
   \end{equation*}
 
 \item $\lambda > 1$
-
+  
   Обозначим $\lambda-1 = h^2 > 0$, получив уравнение
   \begin{equation*}
     \psi_k''(x)+h^2\psi_k(x) = 0
@@ -493,35 +493,35 @@ $S=\{0\leq x \leq 1,\, 0 \leq t \leq 1\}$ и имеет в $S$ равномер�
   \end{align}
   для $k = 2, 3, \dotsc$
 
-  \item $\lambda < 1$
+\item $\lambda < 1$
+  
+  Вводя обозначение $1 - \lambda = h^2$, получим уравнение
+  \begin{equation*}
+    \psi_k''(x) - h^2 \psi_k(x) = 0
+  \end{equation*}
+  
+  Для него известен общий вид решения:
+  \begin{equation*}
+    \psi_k(x) = C_1 \ch{h x} + C_2 \sh{h x}
+  \end{equation*}
 
-    Вводя обозначение $1 - \lambda = h^2$, получим уравнение
-    \begin{equation*}
-      \psi_k''(x) - h^2 \psi_k(x) = 0
-    \end{equation*}
-
-    Для него известен общий вид решения:
-    \begin{equation*}
-      \psi_k(x) = C_1 \ch{h x} + C_2 \sh{h x}
-    \end{equation*}
-
-    Из первого краевого условия следует
-    \begin{equation*}
-      \psi_k'(0) = 0 \implies \left( \at{\left \{ h C_1 \sh{h x} + h
-            C_2 \ch{h x} \right \}}{x=0} =
-        h C_2 \right) = 0 \implies C_2 = 0
-    \end{equation*}
-    так что $\psi_k(x) = C_1 \ch{h x}$. Согласно второму краевому
-    условию,
-    \begin{equation*}
-      \psi_k'(1) = 0 \implies \left( \at{\left \{ h C_1 \sh{hx} \right \}}{x=1} =
-        h C_1 \sh{h} \right) = 0
-    \end{equation*}
-    
-    Поскольку $C_1 ≠ 0$, получаем $h = 0 \implies \lambda = 1$, что
-    противоречит предположению $\lambda < 1$. Значит, в данной области
-    у рассматриваемого интегрального оператора характеристических
-    значений нет.
+  Из первого краевого условия следует
+  \begin{equation*}
+    \psi_k'(0) = 0 \implies \left( \at{\left \{ h C_1 \sh{h x} + h
+          C_2 \ch{h x} \right \}}{x=0} =
+      h C_2 \right) = 0 \implies C_2 = 0
+  \end{equation*}
+  так что $\psi_k(x) = C_1 \ch{h x}$. Согласно второму краевому
+  условию,
+  \begin{equation*}
+    \psi_k'(1) = 0 \implies \left( \at{\left \{ h C_1 \sh{hx} \right \}}{x=1} =
+      h C_1 \sh{h} \right) = 0
+  \end{equation*}
+  
+  Поскольку $C_1 ≠ 0$, получаем $h = 0 \implies \lambda = 1$, что
+  противоречит предположению $\lambda < 1$. Значит, в данной области
+  у рассматриваемого интегрального оператора характеристических
+  значений нет.
 \end{enumerate}
 
 С учётом полученных результатов заключаем, что данное по условию
@@ -588,7 +588,7 @@ $h = \frac{b-a}{n-1}$. Тогда квадратурная формула тра
 \begin{equation}
   \label{eq:trapez-rule}
   \intl_a^b{f(x)\,dx} \approx h \left [ \frac{f(\tau_1)+f(\tau_n)}{2} +
-  \sum_{j=2}^{n-1} f(\tau_j) \right ]
+    \sum_{j=2}^{n-1} f(\tau_j) \right ]
 \end{equation}
 
 С учётом \eqref{eq:trapez-rule} интегральное уравнение

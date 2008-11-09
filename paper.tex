@@ -273,18 +273,18 @@ $\frac{1}{\lambda_i}$ — \neword{собственным числом}.
 Теорема Гильберта—Шмидта гласит (см. \cite{krasnov75}), что если
 функция $f(x)$ представима в виде
 \begin{equation}
-  f(x) = \intl_a^b{K(x, t) g(t)\, dt}
+  g(x) = \intl_a^b{K(x, t) \phi(t)\, dt}
 \end{equation}
 где симметричное ядро $K(x, t)$ и функция $g(t)$ квадратично
 интегрируемы, то $f(x)$ можно разложить в ряд Фурье относительно
 ортонормированной системы собственных функций ядра $K(x, t)$:
 \begin{equation}
   \label{eq:gs-series}
-  f(x) = \sum_{k=1}^{\infty}a_k\psi_k(x)
+  g(x) = \sum_{k=1}^{\infty}a_k\psi_k(x)
 \end{equation}
 где коэффициенты $a_k$ вычисляются следующим образом:
 \begin{equation}
-  a_k = \intl_a^b{f(x) \psi_k(x)\,dx} = \intl_a^b{\frac{g(x)}{\lambda_k}\psi_k(x)\,dx}
+  a_k = \intl_a^b{g(x) \psi_k(x)\,dx} = \intl_a^b{\frac{\phi(x)}{\lambda_k}\psi_k(x)\,dx}
 \end{equation}
 
 Если при этом выполнено условие
@@ -292,7 +292,10 @@ $\frac{1}{\lambda_i}$ — \neword{собственным числом}.
   \intl_a^b{K^2(x, t)\,dt} \leq A < \infty
 \end{equation}
 то ряд \eqref{eq:gs-series} сходится абсолютно и равномерно для всякой
-функции $f(x)$, удовлетворяющей условиям теоремы.
+функции $g(x)$, удовлетворяющей условиям теоремы.
+
+Сходимость ряда \eqref{eq:gs-series} равномерная и в случае
+непрерывности ядра $K(x, t)$ и функции $g(x)$.
 
 \subsection{Использование теоремы}
 Рассмотрим способ решения интегрального уравнения с применением

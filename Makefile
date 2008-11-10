@@ -39,6 +39,9 @@ numeric.oct.tex: numeric.oct.nw
 numeric-%.oct.out: numeric.oct
 	echo $* | ${OCTAVE} $<
 
+# `\input{numeric-plot-10.tkz.tex}` in TeX source makes Octave program
+# run with n=10 and write results to `numeric-10.oct.out` and
+# substitutes __N in plot template with 10
 numeric-plot-%.tkz.tex: numeric-plot.tpl.tkz.tex numeric-%.oct.out
 	m4 --define="__N"="$*" $< > $@
 

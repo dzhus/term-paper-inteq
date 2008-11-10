@@ -5,9 +5,9 @@
                       grid/.style={axis,dotted}]
     \input{anal-plot.tkz.tex}
 
-    \draw plot[only marks,mark=*,mark size=.4] file{numeric.oct.out};
+    \draw plot[only marks,mark=*,mark size=.4] file{numeric-__N.oct.out};
   \end{tikzpicture}
   \caption{Сравнение точного решения \eqref{eq:anal-solution} и
-    численного решения \eqref{eq:num-solution}}
+    численного решения \eqref{eq:num-solution} при $n=__N$}
   \label{fig:numeric-plot}
 \end{figure}

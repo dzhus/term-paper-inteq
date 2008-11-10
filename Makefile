@@ -34,8 +34,11 @@ numeric.oct: numeric.oct.nw
 numeric.oct.tex: numeric.oct.nw
 	${NOWEAVE} $< > $@
 
-numeric.oct.out: numeric.oct
-	${OCTAVE} $<
+numeric-%.oct.out: numeric.oct
+	echo $* | ${OCTAVE} $<
+
+numeric-plot-%.tkz.tex: numeric-plot.tpl.tkz.tex numeric-%.oct.out
+	m4 --define="__N"="$*" $< > $@
 
 series.mac.out: series.mac
 	${MAXIMA} $<

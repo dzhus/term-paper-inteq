@@ -4,6 +4,7 @@ BIBTEX := bibtex8 -B
 NOTANGLE := notangle
 NOWEAVE := noweave -n
 OCTAVE := octave
+MAXIMA := maxima -b
 
 include ${DOCNAME}-deps.mk
 
@@ -13,7 +14,7 @@ ${DOCNAME}.aux: ${INCLUDES} ${DOCNAME}.tex ${DOCNAME}.bib
 	${PDFLATEX} ${DOCNAME}
 	${BIBTEX} ${DOCNAME}
 
-${DOCNAME}.pdf: ${DOCNAME}.aux numeric.oct.out
+${DOCNAME}.pdf: ${DOCNAME}.aux numeric.oct.out series.mac.out
 	${PDFLATEX} ${DOCNAME}
 	${PDFLATEX} ${DOCNAME}
 
@@ -35,3 +36,6 @@ numeric.oct.tex: numeric.oct.nw
 
 numeric.oct.out: numeric.oct
 	${OCTAVE} $<
+
+series.mac.out: series.mac
+	${MAXIMA} $<

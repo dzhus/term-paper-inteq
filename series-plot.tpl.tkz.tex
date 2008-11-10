@@ -6,9 +6,10 @@
                       
     \input{anal-plot.tkz.tex}
 
-    \draw plot[only marks, mark=*, mark size=.4] file{series.mac.out};
+    \draw plot[only marks, mark=*, mark size=.4] file{series-__N.mac.out};
   \end{tikzpicture}
   \caption{Сравнение точного решения \eqref{eq:anal-solution} и
-    решения в виде ряда \eqref{eq:gs-solution}}
+    решения в виде ряда \eqref{eq:gs-solution} при количестве членов
+    ряда $n=__N$}
   \label{fig:series-plot}
 \end{figure}

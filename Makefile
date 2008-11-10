@@ -10,7 +10,7 @@ include ${DOCNAME}-deps.mk
 
 .PHONY: doc clean
 
-.PRECIOUS: numeric-%.oct.out series.mac.out
+.PRECIOUS: numeric-%.oct.out series-%.mac.out
 
 ${DOCNAME}.aux: ${INCLUDES} ${DOCNAME}.tex ${DOCNAME}.bib
 	${PDFLATEX} ${DOCNAME}
@@ -45,11 +45,15 @@ numeric-%.oct.out: numeric.oct
 numeric-plot-%.tkz.tex: numeric-plot.tpl.tkz.tex numeric-%.oct.out
 	m4 --define="__N"="$*" $< > $@
 
+# Does the same for Maxima program
+series-plot-%.tkz.tex: series-plot.tpl.tkz.tex series-%.mac.out
+	m4 --define="__N"="$*" $< > $@
+
 series.mac: series.mac.nw
 	${NOTANGLE} $< > $@
 
 series.mac.tex: series.mac.nw
 	${NOWEAVE} $< > $@
 
-series.mac.out: series.mac
-	${MAXIMA} $<
+series-%.mac.out: series.mac
+	echo $*";" | ${MAXIMA} $<

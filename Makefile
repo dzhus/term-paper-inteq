@@ -10,6 +10,8 @@ include ${DOCNAME}-deps.mk
 
 .PHONY: doc clean
 
+.PRECIOUS: numeric-%.oct.out series.mac.out
+
 ${DOCNAME}.aux: ${INCLUDES} ${DOCNAME}.tex ${DOCNAME}.bib
 	${PDFLATEX} ${DOCNAME}
 	${BIBTEX} ${DOCNAME}
@@ -39,6 +41,12 @@ numeric-%.oct.out: numeric.oct
 
 numeric-plot-%.tkz.tex: numeric-plot.tpl.tkz.tex numeric-%.oct.out
 	m4 --define="__N"="$*" $< > $@
+
+series.mac: series.mac.nw
+	${NOTANGLE} $< > $@
+
+series.mac.tex: series.mac.nw
+	${NOWEAVE} $< > $@
 
 series.mac.out: series.mac
 	${MAXIMA} $<

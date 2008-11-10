@@ -369,6 +369,7 @@ $\lambda$ в уравнении не должен быть характерис�
 \cite{krasnov76} и \cite{polyanin03}.
 
 \subsection{Применение метода}
+\label{sec:gs-application}
 
 Известно (см. \cite{polyanin03}), что предположение о представимости
 ядра $K(x, t)$ в виде ряда \eqref{eq:bilinear-kernel-series}
@@ -535,6 +536,7 @@ $S=\{0\leq x \leq 1,\, 0 \leq t \leq 1\}$ и имеет в $S$ равномер�
 Итак, в результате решения краевой задачи \eqref{eq:eig-boundary}
 найдена ортонормированная система собственных функций $\{\psi_i(x)\}$:
 \begin{equation}
+  \label{eq:eigfuns}
   \begin{cases}
     \psi_0(x) = 1 \\
     \psi_k(x) = \sqrt{2} \cos{\pi k x}, & k \in \set{N}
@@ -601,6 +603,11 @@ $S=\{0\leq x \leq 1,\, 0 \leq t \leq 1\}$ и имеет в $S$ равномер�
 
 Отметим высокую скорость сходимости ряда \eqref{eq:gs-solution} (как у
 ряда $\sum \limits_{k=1}^\infty \frac{1}{k^4}$).
+
+\subsection{Реализация}
+\label{sec:gs-implementation}
+
+\input{series.mac.tex}
 
 \subsection{Сравнение с аналитическим решением}
 
@@ -681,10 +688,9 @@ $\Xi_n$:
 \end{equation}
 
 \subsection{Реализация}
-\label{sec:numeric-implementation}
+\label{sec:numerical-implementation}
 
 \input{numeric.oct.tex}
-
 
 \subsection{Сравнение с аналитическим решением}
 \label{sec:comparison}

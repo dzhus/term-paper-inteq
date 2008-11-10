@@ -5,8 +5,7 @@
                       grid/.style={axis,dotted}]
     \input{anal-plot.tkz.tex}
 
-    \draw[very thick, color=gray] plot[domain=-0.1:1.1] function{sinh(-1)*cos(x)/sin(1)};
-    \draw plot[only marks,mark=*,mark size=.4] file{out.oct};
+    \draw plot[only marks,mark=*,mark size=.4] file{numeric.oct.out};
   \end{tikzpicture}
   \caption{Сравнение точного решения \eqref{eq:anal-solution} и
     численного решения \eqref{eq:num-solution}}

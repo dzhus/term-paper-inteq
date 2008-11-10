@@ -13,7 +13,7 @@ ${DOCNAME}.aux: ${INCLUDES} ${DOCNAME}.tex ${DOCNAME}.bib
 	${PDFLATEX} ${DOCNAME}
 	${BIBTEX} ${DOCNAME}
 
-${DOCNAME}.pdf: ${DOCNAME}.aux out.oct
+${DOCNAME}.pdf: ${DOCNAME}.aux numeric.oct.out
 	${PDFLATEX} ${DOCNAME}
 	${PDFLATEX} ${DOCNAME}
 
@@ -33,5 +33,5 @@ numeric.oct: numeric.oct.nw
 numeric.oct.tex: numeric.oct.nw
 	${NOWEAVE} $< > $@
 
-out.oct: numeric.oct
+numeric.oct.out: numeric.oct
 	${OCTAVE} $<

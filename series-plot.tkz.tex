@@ -5,9 +5,10 @@
                       grid/.style={axis,dotted}]
                       
     \input{anal-plot.tkz.tex}
+
     \draw plot[only marks, mark=*, mark size=.4] file{series.mac.out};
   \end{tikzpicture}
-  \label{fig:series-plot}
   \caption{Сравнение точного решения \eqref{eq:anal-solution} и
     решения в виде ряда \eqref{eq:gs-solution}}
+  \label{fig:series-plot}
 \end{figure}

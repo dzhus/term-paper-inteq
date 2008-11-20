@@ -1,10 +1,11 @@
-DOCNAME := paper
 PDFLATEX := pdflatex --shell-escape
 BIBTEX := bibtex8 -B
 NOTANGLE := notangle
 NOWEAVE := noweave -n
 OCTAVE := octave
 MAXIMA := maxima -b
+
+DOCNAME := paper
 
 include ${DOCNAME}-deps.mk
 
@@ -42,11 +43,13 @@ numeric-%.oct.out: numeric.oct
 # `\input{numeric-plot-10.tkz.tex}` in TeX source makes Octave program
 # run with n=10 and write results to `numeric-10.oct.out` and
 # substitutes __N in plot template with 10
-numeric-plot-%.tkz.tex: numeric-plot.tpl.tkz.tex numeric-%.oct.out
+numeric-plot-%.tkz.tex: numeric-plot.tpl.tkz.tex numeric-%.oct.out \
+                        anal-plot.tkz.tex
 	m4 --define="__N"="$*" $< > $@
 
 # Does the same for Maxima program
-series-plot-%.tkz.tex: series-plot.tpl.tkz.tex series-%.mac.out
+series-plot-%.tkz.tex: series-plot.tpl.tkz.tex series-%.mac.out \
+                       anal-plot.tkz.tex
 	m4 --define="__N"="$*" $< > $@
 
 series.mac: series.mac.nw

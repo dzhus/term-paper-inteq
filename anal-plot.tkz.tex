@@ -1,5 +1,4 @@
-% `\input{anal-plot.tkz.tex}` in your tikzpicture to use this. Parent
-% picture must define `axis` and `grid` styles
+% `\input{anal-plot.tkz.tex}` in your tikzpicture to use this
 
 \coordinate[] (O) at (0,0) {};
 
@@ -7,8 +6,8 @@
 \draw[help lines, densely dashed] ($ (O) - (0,1.6) $) grid[xstep=.5,ystep=.5] ($ (O) + (1.1,0) $);
 
 % cartesian coordinates
-\draw [help lines,->] ($ (O) - (0,1.8) $)--($ (O) + (0,0.5) $) node[label={[black]left:$y$}] {};
-\draw [help lines,->] (O)--($ (O) + (1.5,0) $) node[label={[black]above:$x$}] {};
+\draw [thin,->] ($ (O) - (0,1.8) $)--($ (O) + (0,0.5) $) node[label={left:$y$}] {};
+\draw [thin,->] (O)--($ (O) + (1.5,0) $) node[label={above:$x$}] {};
 
 % axis marks
 \draw[] (0pt,-1pt) -- (0pt,1pt);

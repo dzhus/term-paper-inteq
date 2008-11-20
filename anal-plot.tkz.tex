@@ -3,9 +3,12 @@
 
 \coordinate[] (O) at (0,0) {};
 
+% grid
+\draw[help lines, densely dashed] ($ (O) - (0,1.6) $) grid[xstep=.5,ystep=.5] ($ (O) + (1.1,0) $);
+
 % cartesian coordinates
-\draw [axis,->] ($ (O) - (0,1.8) $)--($ (O) + (0,0.5) $) node[label=left:$y$] {};
-\draw [axis,->] (O)--($ (O) + (1.5,0) $) node[label=above:$x$] {};
+\draw [help lines,->] ($ (O) - (0,1.8) $)--($ (O) + (0,0.5) $) node[label={[black]left:$y$}] {};
+\draw [help lines,->] (O)--($ (O) + (1.5,0) $) node[label={[black]above:$x$}] {};
 
 % axis marks
 \draw[] (0pt,-1pt) -- (0pt,1pt);
@@ -13,13 +16,11 @@
 
 \foreach \x/\xtext in {.5/\frac{1}{2}, 1}
 {\begin{scope}
-    \draw[xshift=\x cm,grid] (0,0)--(0,-1.65);
     \draw[xshift=\x cm] (0pt,-1pt) -- (0pt,1pt) node[above] {$\xtext$};
   \end{scope}}
 
 \foreach \y/\ytext in {-1.5/-\frac{3}{2}, -1, -.5/-\frac{1}{2}, 0/}
 {\begin{scope}
-    \draw[yshift=\y cm,grid] (0,0)--(1.2,0);
     \draw[yshift=\y cm] (1pt,0pt)--(-1pt,0pt) node[left] {$\ytext$};
   \end{scope}}
 

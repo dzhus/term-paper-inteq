@@ -1,8 +1,6 @@
 \begin{figure}[htb]
   \centering
-  \begin{tikzpicture}[scale=4,
-                      axis/.style={draw=gray,thin},
-                      grid/.style={axis,dotted}]
+  \begin{tikzpicture}[scale=4]
     \input{anal-plot.tkz.tex}
 
     \draw plot[only marks,mark=*,mark size=.4] file{numeric-__N.oct.out};

@@ -4,12 +4,15 @@
   \begin{tikzpicture}
     \begin{axis}
       \input{anal-plot.tkz.tex}
+      \label{plot:anal-by-series-__N}
       
-      \addplot[only marks,mark=*] file{series-__N.mac.out};
+      \addplot[smooth, mark=*] file{series-__N.mac.out};
+      \label{plot:series-__N}
     \end{axis}
   \end{tikzpicture}
-  \caption{Сравнение точного решения \eqref{eq:anal-solution} и
-    решения в виде ряда \eqref{eq:gs-solution} при количестве членов
+  \caption{Точное решение \ref{plot:anal-by-series-__N}
+    \eqref{eq:anal-solution} и решение в виде ряда
+    \ref{plot:series-__N} \eqref{eq:gs-solution} при количестве членов
     ряда $n=__N$}
   \label{fig:series-plot}
 \end{figure}

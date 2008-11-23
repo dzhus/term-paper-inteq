@@ -4,11 +4,15 @@
   \begin{tikzpicture}
     \begin{axis}
       \input{anal-plot.tkz}
+      \label{plot:anal-by-numeric-__N}
       
       \addplot[only marks,mark=*] file{numeric-__N.oct.out};
+      \label{plot:numeric-__N}
     \end{axis}
   \end{tikzpicture}
-  \caption{Графики точного решения \eqref{eq:anal-solution} и
-    численного решения \eqref{eq:num-solution} при $n=__N$}
+  \caption{Точное \ref{plot:anal-by-numeric-__N}
+    \eqref{eq:anal-solution} и численное решение
+    \ref{plot:numeric-__N} \eqref{eq:num-solution} при количестве
+    точек в сетке $n=__N$}
   \label{fig:numeric-plot}
 \end{figure}

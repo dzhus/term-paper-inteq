@@ -51,7 +51,7 @@ n: read("n=?");
 <<установка систем $\psi_k(x)$ и $\lambda_k$>>
 <<вычисление значений $f_k$>>                                              
 series: sum(f_k(k) * eigenfun(k) / (eigenval(k) - lambda), k, 0, n-1);
-solution(y) := f(y) + lambda * at(series, x=y);
+solution(x) := f(x) + lambda * at(series, 'x=x);
 
 @ Функции [[eigenfun]] и [[eigenval]] определены согласно
 \eqref{eq:eigfuns} и \eqref{eq:eigvals} и возвращают выражение для
@@ -67,6 +67,6 @@ eigenval(k) := if (k=0) then 1 else 1 + (%pi*k)^2;
 f_k(k) := integrate(f(x) * eigenfun(k), x, a, b);
 
 <<запись графика полученного решения в файл>>=
-plot2d([solution(y)], [y, a, b], [nticks, 1], [adapt_depth, 1],
+plot2d([solution(x)], [x, a, b], [nticks, 1], [adapt_depth, 1],
        [gnuplot_preamble, ssubst(string(n),
                                  "x", "set table \"series-x.mac.out\"")]);

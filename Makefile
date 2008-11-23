@@ -1,4 +1,4 @@
-PDFLATEX := pdflatex --shell-escape
+PDFLATEX := pdflatex -shell-escape
 BIBTEX := bibtex8 -B
 NOTANGLE := notangle
 NOWEAVE := noweave -n

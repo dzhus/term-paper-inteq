@@ -1,9 +1,12 @@
+\input{axis-options.tkz}
 \begin{figure}[htb]
   \centering
-  \begin{tikzpicture}[scale=4]
-    \input{anal-plot.tkz.tex}
-
-    \draw plot[only marks,mark=*,mark size=.4] file{numeric-__N.oct.out};
+  \begin{tikzpicture}
+    \begin{axis}
+      \input{anal-plot.tkz}
+      
+      \addplot[only marks,mark=*] file{numeric-__N.oct.out};
+    \end{axis}
   \end{tikzpicture}
   \caption{Графики точного решения \eqref{eq:anal-solution} и
     численного решения \eqref{eq:num-solution} при $n=__N$}

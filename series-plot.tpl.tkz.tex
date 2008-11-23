@@ -1,10 +1,12 @@
+\input{axis-options.tkz}
 \begin{figure}[htb]
   \centering
-  \begin{tikzpicture}[scale=4]
-                      
-    \input{anal-plot.tkz.tex}
-
-    \draw plot[only marks, mark=*, mark size=.4] file{series-__N.mac.out};
+  \begin{tikzpicture}
+    \begin{axis}
+      \input{anal-plot.tkz.tex}
+      
+      \addplot[only marks,mark=*] file{series-__N.mac.out};
+    \end{axis}
   \end{tikzpicture}
   \caption{Сравнение точного решения \eqref{eq:anal-solution} и
     решения в виде ряда \eqref{eq:gs-solution} при количестве членов

@@ -455,7 +455,7 @@ $S=\{0\leq x \leq 1,\, 0 \leq t \leq 1\}$ и имеет в $S$ равномер�
 
   Из первого краевого условия получим
   \begin{equation*}
-    \psi_k'(0) = 0 \implies \left( \at{\left \{ -h C_1 \sin{hx} + k C_2 \cos{hx} \right \}}{x=0} =
+    \psi_k'(0) = 0 \implies \left( \at{\left \{ -h C_1 \sin{hx} + h C_2 \cos{hx} \right \}}{x=0} =
       h C_2 \right) = 0 \implies C_2 = 0
   \end{equation*}
   откуда $\psi_k(x) = C_1 \cos{hx}$. Для поиска $C_1$ воспользуемся
@@ -496,11 +496,11 @@ $S=\{0\leq x \leq 1,\, 0 \leq t \leq 1\}$ и имеет в $S$ равномер�
 
   Таким образом, в данной области найдена ортонормированная система
   собственных функций и характеристических чисел
-  \begin{align}
+  \begin{align*}
     \psi_k = \sqrt{2} \cos{\pi k x} \\
     \lambda_k = \pi^2 k^2 + 1
-  \end{align}
-  для $k = 1, 2, \dotsc$
+  \end{align*}
+  где $k = 1, 2, \dotsc$
 
 \item $\lambda_k < 1$
   
@@ -569,13 +569,13 @@ $S=\{0\leq x \leq 1,\, 0 \leq t \leq 1\}$ и имеет в $S$ равномер�
 интеграла $J_k = \int_0^1{\ch(x) \cos(\pi k x)\,dx}$ (так что $f_k =
 \sqrt{2}\cdot J_k$), воспользовавшись интегрированием по частям:
 \begin{multline*}
-  J_k = \intl_a^b{\ch(x) \cos(\pi k x)\,dx} =
+  J_k = \intl_0^1{\ch(x) \cos(\pi k x)\,dx} =
   \underbrace{\intat{\frac{\ch(x)\sin(\pi k x)}{\pi k}}{1}{0}}_0 -
   \intl_0^1\frac{\sh(x) \sin(\pi k x)}{\pi k} \,dx = \\ =
   \underbrace{\vphantom{\intl_0^1}\intat{\frac{\sh(x)\cos(\pi k
         x)}{\pi^2 k^2}}{1}{0}}_{\frac{\sh{1}\cdot (-1)^k}{\pi^2 k^2}}
   - \underbrace{\intl_0^1{\frac{\ch(x) \cos(\pi k x)}{\pi^2
-        k^2}\,dx}}_{J_k}
+        k^2}\,dx}}_{\frac{J_k}{\pi^2 k^2}}
 \end{multline*}
 откуда получаем $J_k$:
 \begin{gather*}

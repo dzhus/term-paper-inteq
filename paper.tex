@@ -1,7 +1,8 @@
-\documentclass{article}
+\documentclass[11pt]{article}
 \usepackage[utf8x]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{amsmath,amssymb}
+\usepackage[top=2.5cm, bottom=3cm, left=5cm, right=5cm]{geometry}
 
 % literate programming tool
 \usepackage{noweb}
@@ -612,6 +613,7 @@ $S=\{0\leq x \leq 1,\, 0 \leq t \leq 1\}$ и имеет в $S$ равномер�
 
 \input{series.mac.tex}
 
+\clearpage
 \subsection{Сравнение с аналитическим решением}
 
 На рисунке \ref{fig:series-plot} сплошной линией изображён график
@@ -690,6 +692,7 @@ $\Xi_n$:
   \end{pmatrix}
 \end{equation}
 
+\clearpage
 \subsection{Реализация}
 \label{sec:numerical-implementation}
 
